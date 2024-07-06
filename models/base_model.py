@@ -5,10 +5,14 @@ import uuid
 from datetime import datetime
 
 
+
+
 class BaseModel:
-    """A base class for all hbnb models"""
+    """This class will defines all common attributes/methods
+    for other classes
+    """
     def __init__(self, *args, **kwargs):
-        """Instatntiates a new model"""
+        """Initialization of Basemodel"""
         if not kwargs:
             from models import storage
             self.id = str(uuid.uuid4())
@@ -22,7 +26,6 @@ class BaseModel:
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             del kwargs['__class__']
             self.__dict__.update(kwargs)
-
     def __str__(self):
         """Returns a string representation of the instance"""
         cls = (str(type(self)).split('.')[-1]).split('\'')[0]
@@ -43,4 +46,3 @@ class BaseModel:
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
         return dictionary
-
