@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """This module defines a base class for all models in our hbnb clone"""
 import uuid
@@ -42,3 +43,4 @@ class BaseModel:
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
         return dictionary
+
