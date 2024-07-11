@@ -5,8 +5,8 @@ from models.base_model import BaseModel
 from models import storage
 import os
 
-@unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') != 'file', "Skipping FileStorage tests for non-file storage types")
-class TestFileStorage(unittest.TestCase):
+
+class test_fileStorage(unittest.TestCase):
     """ Class to test the file storage method """
 
     def setUp(self):
@@ -21,7 +21,7 @@ class TestFileStorage(unittest.TestCase):
         """ Remove storage file at end of tests """
         try:
             os.remove('file.json')
-        except Exception:
+        except BaseException:
             pass
 
     def test_obj_list_empty(self):
@@ -105,7 +105,5 @@ class TestFileStorage(unittest.TestCase):
     def test_storage_var_created(self):
         """ FileStorage object storage created """
         from models.engine.file_storage import FileStorage
+        print(type(storage))
         self.assertEqual(type(storage), FileStorage)
-
-if __name__ == '__main__':
-    unittest.main()
